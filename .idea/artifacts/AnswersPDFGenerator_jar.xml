@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AnswersPDFGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AnswersPDFGenerator_jar</output-path>
+    <root id="archive" name="AnswersPDFGenerator.jar">
+      <element id="module-output" name="AnswersPDFGenerator" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../javalibs/itextpdf-5.5.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
