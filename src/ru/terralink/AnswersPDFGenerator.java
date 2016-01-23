@@ -80,6 +80,7 @@ public class AnswersPDFGenerator {
         title.setAlignment(Element.ALIGN_CENTER);
         Chapter chapter = new Chapter(title, 1);
         chapter.setNumberDepth(0);
+        chapter.add(new Paragraph(" ", paragraphFont));
         chapter.add(new Paragraph("Предмет закупки: " + params.get("subject"), paragraphFont));
         chapter.add(new Paragraph("Вид мероприятия: " + params.get("event"), paragraphFont));
         chapter.add(new Paragraph("Инициатор: " + params.get("initiator"), paragraphFont));
@@ -89,31 +90,39 @@ public class AnswersPDFGenerator {
     }
 
     private Element createTable() throws DocumentException {
-        PdfPTable table = new PdfPTable(4);
+        PdfPTable table = new PdfPTable(6);
         table.setWidthPercentage(100);
         PdfPCell cell0 = new PdfPCell(new Paragraph(NUMBER, normalFont));
         cell0.setBackgroundColor(BaseColor.LIGHT_GRAY);
         cell0.setColspan(1);
         PdfPCell cell1 = new PdfPCell(new Paragraph(QUESTION, normalFont));
         cell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
-        PdfPCell cell2 = new PdfPCell(new Paragraph(DECISION, normalFont));
+        PdfPCell cell2 = new PdfPCell(new Paragraph(POSITION, normalFont));
         cell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
-        PdfPCell cell3 = new PdfPCell(new Paragraph(COMMENT, normalFont));
+        PdfPCell cell3 = new PdfPCell(new Paragraph(SOLUTION, normalFont));
         cell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        PdfPCell cell4 = new PdfPCell(new Paragraph(DECISION, normalFont));
+        cell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        PdfPCell cell5 = new PdfPCell(new Paragraph(COMMENT, normalFont));
+        cell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
         table.addCell(cell0);
         table.addCell(cell1);
         table.addCell(cell2);
         table.addCell(cell3);
+        table.addCell(cell4);
+        table.addCell(cell5);
         int cnt = 1;
         for (HashMap<String,String> answer : answers) {
 
             table.addCell(new PdfPCell(new Paragraph(Integer.toString(cnt), normalFont)));
             table.addCell(new PdfPCell(new Paragraph(answer.get("QUESTION"), normalFont)));
+            table.addCell(new PdfPCell(new Paragraph(answer.get("POSITION"), normalFont)));
+            table.addCell(new PdfPCell(new Paragraph(answer.get("SOLUTION"), normalFont)));
             table.addCell(new PdfPCell(new Paragraph(answer.get("DECISION"), normalFont)));
             table.addCell(new PdfPCell(new Paragraph(answer.get("DECISIONCOMMENT"), normalFont)));
             cnt++;
         }
-        float[] columnWidths = new float[]{5f, 30f, 15f, 30f};
+        float[] columnWidths = new float[]{5f, 30f, 30f, 30f, 15f, 30f};
         table.setWidths(columnWidths);
         return table;
     }
@@ -140,6 +149,8 @@ public class AnswersPDFGenerator {
     }
 
     private static final String COMMENT = "Комментарий";
+    private static final String POSITION = "Пояснение";
+    private static final String SOLUTION = "Проект решения";
     private static final String DECISION = "Решение";
     private static final String QUESTION = "Вопрос";
     private static final String NUMBER = "№";
