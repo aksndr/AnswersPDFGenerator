@@ -132,7 +132,7 @@ public class AnswersPDFGenerator {
     }
 
     private Element createChapter() throws UnsupportedEncodingException {
-        Anchor anchor = new Anchor("Результаты заочного голосования", chapterFont);
+        Anchor anchor = new Anchor("Опросный лист", chapterFont);
         Paragraph title = new Paragraph(anchor);
         title.setAlignment(Element.ALIGN_CENTER);
         Chapter chapter = new Chapter(title, 1);
