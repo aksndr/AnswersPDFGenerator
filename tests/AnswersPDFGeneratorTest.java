@@ -21,6 +21,7 @@ public class AnswersPDFGeneratorTest {
         params.put("initiator", "ФИО инициатора");
         params.put("subject", "Предмет закупки");
         params.put("event", "Вид мероприятия");
+        params.put("eventnum", "1234234234");
 
         result = dfg.setParams(params);
 

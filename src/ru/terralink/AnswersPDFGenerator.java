@@ -106,6 +106,8 @@ public class AnswersPDFGenerator {
         chapter.add(new Paragraph("Предмет закупки: " + tmpStr, paragraphFont));
         tmpStr = (params.get("event") == null) ? "" : params.get("event");
         chapter.add(new Paragraph("Вид мероприятия: " + tmpStr, paragraphFont));
+        tmpStr = (params.get("eventnum") == null) ? "" : params.get("eventnum");
+        chapter.add(new Paragraph("Номер заседания: " + tmpStr, paragraphFont));
         tmpStr = (params.get("initiator") == null) ? "" : params.get("initiator");
         chapter.add(new Paragraph("Инициатор: " + tmpStr, paragraphFont));
         chapter.add(new Paragraph("Голосующий: " ,paragraphFont));
@@ -140,6 +142,7 @@ public class AnswersPDFGenerator {
         chapter.add(new Paragraph(" ", paragraphFont));
         chapter.add(new Paragraph("Предмет закупки: " + params.get("subject"), paragraphFont));
         chapter.add(new Paragraph("Вид мероприятия: " + params.get("event"), paragraphFont));
+        chapter.add(new Paragraph("Номер заседания: " + params.get("eventnum"), paragraphFont));
         chapter.add(new Paragraph("Инициатор: " + params.get("initiator"), paragraphFont));
         chapter.add(new Paragraph("Голосующий: " + params.get("voter"),paragraphFont));
 
