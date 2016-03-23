@@ -129,6 +129,10 @@ public class AnswersPDFGenerator {
             String tmpstr = Integer.toString(cnt++)+". "+answer.get("SOLUTION");
             document.add(new Paragraph(tmpstr, paragraphFontN));
             document.add(new Paragraph(" "));
+            document.add(new Paragraph("ИНФОРМАЦИЯ (КОММЕНТАРИЙ) ПО ВОПРОСУ: ", paragraphFontN));
+            tmpstr = answer.get("POSITION");
+            document.add(new Paragraph(tmpstr, paragraphFontN));
+            document.add(new Paragraph(" "));
             document.add(createQuesTable());
         }
     }
